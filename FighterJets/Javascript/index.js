@@ -76,7 +76,7 @@
             });
 
             if (filteredPlanes.length === 0) {
-                planesContainer.innerHTML = '<p class="text-center text-xl text-gray-500 mt-8 col-span-full">No jets found for the selected filters.</p>';
+                planesContainer.innerHTML = '<p>No jets found for the selected filters.</p>';
                 return;
             }
 

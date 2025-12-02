@@ -647,72 +647,96 @@ const planes = {
                 },
             }
         };
-        function getUrlParameter(name) {
-            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-            const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-            const results = regex.exec(location.search);
-            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+function getUrlParameter(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    const results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const planeKey = getUrlParameter('plane');
+    const planeData = planes[planeKey]; // Presupunem că 'planes' este definit global
+    const detailsContainer = document.getElementById('plane-details');
+    
+    if (planeData) {
+        let htmlContent = `
+            <div class="image-text-container">
+                <div class="image-container">
+                    <img src="${planeData.image_url}" alt="${planeData.name}">
+                </div>
+                <div class="text-content">
+                    <h1>${planeData.name}</h1>
+                    <h2>${planeData.country}</h2>
+                    <p>${planeData.description}</p>
+                </div>
+            </div>
+            
+            <div class="plane-info-grid">
+        `; // Am închis primul div (image-text-container) și am deschis div-ul pentru grid
+
+        // Secțiunea Istoric (History)
+        if (planeData.history) {
+            htmlContent += `
+                <div class="grid-item history">
+                    <h3>Development and History</h3>
+                    <p class="info">${planeData.history}</p>
+                </div>
+            `;
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const planeKey = getUrlParameter('plane');
-            const planeData = planes[planeKey];
-            const detailsContainer = document.getElementById('plane-details');
-            
-            if (planeData) {
-            let htmlContent = `
-                 <div class="image-container">
-                 <img src="${planeData.image_url}" alt="${planeData.name}">
-                 </div>
-                <h1 >${planeData.name}</h1>
-                <h2 >${planeData.country}</h2>
-                <p >${planeData.description}</p>
-                `;
+        // Secțiunea Specificații Tehnice (Tech Specs)
+        if (planeData.tech_specs) {
+            htmlContent += `
+                <div class="grid-item tech-specs">
+                    <h3>Technical Characteristics</h3>
+                    <ul class="">
+                        ${planeData.tech_specs.map(spec => `<li>${spec}</li>`).join('')}
+                    </ul>
+                </div>
+            `;
+        }
 
-            if (planeData.history) {
-                htmlContent += `
-                <h3 >Development and History</h3>
-                <p class="info">${planeData.history}</p>
-                `;
-            }
+        // Secțiunea Armament și Capabilități (Armament)
+        if (planeData.armament) {
+            htmlContent += `
+                <div class="grid-item armament">
+                    <h3>Armament and Capabilities</h3>
+                    <p class="">${planeData.armament.intro}</p>
+                    <ul class="list-disc list-inside space-y-2 mb-6">
+                        ${planeData.armament.list.map(arm => `<li>${arm}</li>`).join('')}
+                    </ul>
+                </div>
+            `;
+        }
 
-            if (planeData.tech_specs) {
-                htmlContent += `
-                <h3 class="">Technical Characteristics</h3>
-                <ul class="">
-                    ${planeData.tech_specs.map(spec => `<li>${spec}</li>`).join('')}
-                </ul>
-                `;
-            }
+        // Secțiunea Sisteme Radar și Avionică (Avionics)
+        if (planeData.avionics) {
+            htmlContent += `
+                <div class="grid-item avionics">
+                    <h3>Radar Systems and Avionics</h3>
+                    <p class="">${planeData.avionics.intro}</p>
+                    <ul class="list-disc list-inside space-y-2">
+                        ${planeData.avionics.list.map(avio => `<li>${avio}</li>`).join('')}
+                    </ul>
+                </div>
+            `;
+        }
 
-            if (planeData.armament) {
-                htmlContent += `
-                <h3 class="text-xl font-bold mb-3 border-b border-gray-600 pb-2">Armament and Capabilities</h3>
-                <p class="mb-4">${planeData.armament.intro}</p>
-                <ul class="list-disc list-inside space-y-2 mb-6">
-                    ${planeData.armament.list.map(arm => `<li>${arm}</li>`).join('')}
-                </ul>
-                `;
-            }
+        // Secțiunea Testare și Operațiuni (Operations)
+        if (planeData.operations) {
+            htmlContent += `
+                <div class="grid-item operations">
+                    <h3>Testing and Operations</h3>
+                    <p>${planeData.operations}</p>
+                </div>`;
+        }
+        
+        // Închide div-ul plane-info-grid
+        htmlContent += `</div>`; 
 
-            if (planeData.avionics) {
-                htmlContent += `
-                <h3 class="">Radar Systems and Avionics</h3>
-                <p class="">${planeData.avionics.intro}</p>
-                <ul class="list-disc list-inside space-y-2">
-                    ${planeData.avionics.list.map(avio => `<li>${avio}</li>`).join('')}
-                </ul>
-                `;
-            }
-
-    if (planeData.operations) {
-                htmlContent += `
-                <h3>Testing and Operations</h3>
-                <p>${planeData.operations}</p>`;
-            }
-
-            detailsContainer.innerHTML = htmlContent;
-            } else {
-            detailsContainer.innerHTML = `<p class="error-404">Plane not found.</p>`;
-            }
-        });
+        detailsContainer.innerHTML = htmlContent;
+    } else {
+        detailsContainer.innerHTML = `<p class="error-404">Plane not found.</p>`;
+    }
+});
