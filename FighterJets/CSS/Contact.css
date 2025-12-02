@@ -74,6 +74,11 @@
             }
         .contact-info p {
             margin-bottom: 1rem;
+            text-decoration: none;
+        }
+        .contact-info p a {
+            color: #58a6ff;
+            text-decoration: none;
         }
         .message {
             margin-top: 1rem;
@@ -114,6 +119,7 @@
             display: flex;
         }
         .pretext {
+            font-family: 'Courier New', Courier, monospace;
             color: #adadad;
             font-size: 1rem;
             background-color: #161b22;

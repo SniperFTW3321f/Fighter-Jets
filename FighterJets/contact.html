@@ -17,36 +17,30 @@
         <h1 >Contact</h1>
         <p>You can contact us through the form below or via the contact information provided.</p>
             <div class="contact-form">
-                <form action="https://formspree.io/f/xwprbnon" method="POST">
+                <form id="contactForm" action="https://formspree.io/f/xwprbnon" method="POST">
+                    <div class="pretext">
+                        <label>
+                            <p>Your name:</p>
+                            <input class="name" type="text" name="Name" required>
+                        </label>
 
-<div  class="pretext">
-    <label>
-    <p>Your name:</p>
-    <input class="name" type="text" name="Name" !important>
-    <label>
-    <p>Your email:</p>
-    <input class="email" type="email" name="Email" !important>
-    </label>
-    <label>
-    <p >Your message:</p>
-    <textarea class="message" name="Message"></textarea>
-    </label>
-    </div>
-<hover><button class="send-button" type="submit">Send</button></hover>
-</form>
+                        <label>
+                            <p>Your email:</p>
+                            <input class="email" type="email" name="Email" required>
+                        </label>
+
+                        <label>
+                            <p>Your message:</p>
+                            <textarea class="message" name="Message"></textarea>
+                        </label>
+                    </div>
+                    <button class="send-button" type="submit" onclick="clearInputs()">Send</button>
+                </form>
             </div>
-            
             <div class="contact-info">
-                <p>
-                    Email: <a href="mail:wHoSnipey0u@gmail.com" class="text-sky-400 hover:text-sky-500">wHoSnipey0u@gmail.com</a>
-                </p>
-                <p>
-                    Phone: +373 700 000 000
-                </p>
-                <p>
-                    Address: Strada Aviației nr. 1, Hincesti, Moldova
-                
-                </p>
+                <p>Email: <a href="mail:wHoSnipey0u@gmail.com">wHoSnipey0u@gmail.com</a></p>
+                <p>Phone: +373 700 000 000</p>
+                <p>Address: Strada Aviației nr. 1, Hincesti, Moldova</p>
             </div>
         </div>
         <footer>
@@ -58,5 +52,20 @@
             </p>
             </div>
         </footer>
+<script>
+    function clearInputs() {
+        const form = document.getElementById('contactForm');
+
+        if (form) {
+            const formElements = form.querySelectorAll('input, textarea');
+
+            formElements.forEach(element => {
+                if (element.type !== 'submit' && element.type !== 'reset' && element.type !== 'hidden') {
+                    element.value = '';
+                }
+            });
+        }
+    }
+</script>
 </body>
 </html>
