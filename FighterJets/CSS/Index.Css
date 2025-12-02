@@ -1,0 +1,127 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(#1e2736, #273346 );
+    color: #2e2416;
+    height: 300%;
+    margin: 0;
+}
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #58a6ff;
+    flex-direction: column  ;
+}
+h1 {
+    margin-top: 80px;
+    margin-bottom: 30px;
+    font-size: 60px;
+}
+.container {
+    margin: 0 auto;
+    padding: 2rem;
+    height: 90%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+.filters {
+    display: flex;;
+    flex-direction: row;
+    gap:30px;
+    justify-content: center;
+}
+.coutry-filter, .role-filter, .generation-filter {
+    margin-bottom: 1rem;
+    color: #3e5a7a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+select {
+    margin-left: 10px;
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 16px;
+    background-color: #161b22;
+    color: #c9d1d9;
+}
+option {
+    margin-right: 10px;
+    border-radius: 20px;
+    font-size: 16px;
+    background-color: #161b22;
+    color: #c9d1d9;
+}
+.SignIn {
+    display: flex;
+    justify-content: flex-end;
+    align-items: right;
+    color: white;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #4CAF50;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 4px;
+}
+.SignIn:hover {
+    background-color: #367c39;
+}
+.card {
+    background-color: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+
+}
+.card:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+.image-container {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-bottom: 1px solid #4a5568;
+    display: flex;
+}
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.5s ease;
+    display: block;
+}
+.card:hover .image-container img {
+    transform: scale(1.05);
+}
+.card-content {
+    padding: 1rem;
+    color: #c9d1d9;
+    padding: 10px;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a .SignIn {
+    color: #58a6ff;
+}
+.footer {
+    bottom: 0;
+    width: 100%;
+    background-color: #1e2736;
+    color: #56cfff;
+    text-align: center;
+    padding: 10px 0;
+}
+footer a {
+            color: #58a6ff;
+            text-decoration: none;
+        }

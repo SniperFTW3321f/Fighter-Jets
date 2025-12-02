@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plane Details</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="html" href="index.html">
+    <link rel="stylesheet" href="CSS/details.css">
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="back-link">&larr; Back to list</a>
+        <div id="plane-details" class="">
+        </div>
+    </header>
+        <footer class="footer">
+            <div class="text-center">
+            <p>&copy; 2023 Fighter Jets. All rights reserved.</p>
+            <p class="mt-2">
+                <a href="privacy_policy.html" class="text-sky-400 hover:text-sky-500">Privacy Policy</a> |
+                <a href="contact.html" class="text-sky-400 hover:text-sky-500">Contact</a>
+            </p>
+            </div>
+        </footer>
+    <script>
+        const planes = {
+            "Saab_Gripen": {
+                name: "Saab JAS 39 Gripen",
+                country: "Sweden",
+                description: "Saab Gripen is a lightweight multirole fighter aircraft, designed to perform a wide range of missions, from air superiority to ground attack. The design philosophy focused on low operational costs and simplified maintenance.",
+                history: "Developed in the 1980s to replace the Saab 35 Draken and Saab 37 Viggen fleets, the Gripen program aimed for a fighter capable of operating from short and improvised runways, including highway sections—an essential requirement in Swedish defense strategy. The first flight took place in 1988, and service entry began in 1997 with the Swedish Air Force.",
+                image_url: "Blueprints/Gripenbp.jpg",
+                tech_specs: [
+                    "Length: 14.1 m",
+                    "Wingspan: 8.4 m",
+                    "Maximum speed: Mach 2.0 (~2,450 km/h at altitude).",
+                    "Engine: A single Volvo Aero RM12 turbofan, an improved version of the General Electric F404, with afterburner and a thrust-to-weight ratio of 8:1."
+                ],
+                armament: {
+                    intro: "Gripen is designed with a robust basic structure and 8 external hardpoints, allowing flexible weapon configurations. It can carry up to 5,200 kg of payload.",
+                    list: [
+                        "Cannon: Mauser BK-27 27 mm, internally mounted, with a precision fire control system.",
+                        "Air-to-Air Missiles: Short-range infrared-guided missiles such as IRIS-T and AIM-9 Sidewinder. For medium and long-range engagements, it uses AIM-120 AMRAAM and MBDA Meteor, the latter being a ramjet-powered missile offering an extended no-escape zone.",
+                        "Bombs: Can launch a wide range of guided and unguided bombs, including GBU-12 (laser-guided bombs) and GBU-39 (Small Diameter Bombs)."
+                    ]
+                },
+                avionics: {
+                    intro: "Gripen avionics are based on an open architecture, allowing easy upgrades. Its flight control system is triple-redundant fly-by-wire, providing excellent maneuverability.",
+                    list: [
+                        "Radar: An advanced pulse-Doppler radar PS-05/A, capable of tracking multiple targets simultaneously and electronically scanning a narrow band.",
+                        "Electronic Warfare Systems: Integrated internal jamming and radar detection (EW) system, enabling identification and countering of enemy radar threats.",
+                        "Datelink: Liaison 16 and Link 22 allow real-time information exchange with other aircraft and ground command units."
+                    ]
+                },
+                operations: "Gripen has been exported to countries such as the Czech Republic, Hungary, South Africa, and Thailand. Its modular design and low maintenance costs make it an attractive option for air forces with smaller budgets but high performance requirements."
+            },
+            "F-22_Raptor": {
+                name: "Lockheed Martin F-22 Raptor",
+                country: "United States",
+                description: "F-22 Raptor is a fifth-generation, air superiority fighter aircraft designed with a focus on radar stealth, maneuverability, and supercruise, and is considered a leader in aviation technology.",
+                history: "Developed under the Advanced Tactical Fighter (ATF) program to replace the F-15 Eagle, the Raptor was designed to counter the most advanced aerial threats. The prototype first flew in 1997, and service entry began in 2005. Its design includes a 'fused' aerodynamic design and radar signature reduction techniques, making it the most capable fighter aircraft in the U.S. arsenal.",
+                image_url: "Blueprints/F22bp.jpg",
+                tech_specs: [
+                    "Length: 18.9 m",
+                    "Wingspan: 13.6 m",
+                    "Maximum speed: Over Mach 2.0, with supercruise at Mach 1.8. This capability allows it to fly supersonic without using afterburners, saving fuel and extending range.",
+                    "Engine: Two Pratt & Whitney F119-PW-100 turbofans, delivering over 156 kN of thrust with afterburner. The engines have two-dimensional thrust vectoring nozzles, allowing exceptional maneuverability at low and high speeds."
+                ],
+                armament: {
+                    intro: "To maintain its stealth properties, the Raptor carries most of its weapons in internal compartments. It can carry a payload of up to 9,980 kg.",
+                    list: [
+                        "Cannon: An internal M61A2 Vulcan 20 mm cannon, with a firing rate of 6,000 rounds per minute.",
+                        "Air-to-Air Missiles: In internal compartments, it can carry up to six AIM-120 AMRAAM medium-range missiles and two AIM-9 Sidewinder short-range missiles."
+                    ]
+                },
+                avionics: {
+                    intro: "The Raptor's integrated avionics system is as important as its stealth properties. It combines data from all sensors to provide the pilot with superior situational awareness.",
+                    list: [
+                        "Radar: The AN/APG-77 active electronically scanned array (AESA) radar, capable of detecting and tracking targets at long ranges and with increased resistance to jamming.",
+                        "Sensor Systems: An AN/ALR-94 passive radar warning system, providing 360-degree coverage and the ability to identify threat sources.",
+                        "Datelink: A secure bidirectional IFDL (Intra-Flight Data Link) datalink that allows communication with other F-22 aircraft without emitting radar signals that would compromise the stealth profile."
+                    ]
+                },
+                operations: "F-22 Raptor is an air superiority fighter designed to ensure control of airspace in all combat conditions. It is also capable of performing ground attack, reconnaissance, and electronic warfare missions. It is in service exclusively with the United States Air Force."
+            },
+            "Eurofighter_Typhoon": {
+                name: "Eurofighter Typhoon",
+                country: "Europe (United Kingdom, Germany, Italy, Spain)",
+                description: "The Eurofighter Typhoon is a 4.5 generation multirole fighter aircraft, designed to be an agile aircraft with exceptional air-to-air and air-to-ground combat capability. Its design emphasizes speed and maneuverability.",
+                history: "The Typhoon was the result of a multinational program, launched in the 1980s, to develop an advanced fighter aircraft for new threats. The first flight took place in 1994, and it entered service in 2003. It is an aircraft with a delta wing and canard (small wings in front) design, providing controlled instability that allows increased maneuverability.",
+                image_url: "Blueprints/Eurofighter_bp.jpg",
+                tech_specs: [
+                    "Length: 15.9 m",
+                    "Wingspan: 11.0 m",
+                    "Maximum speed: Over Mach 2.0 (~2,450 km/h at altitude).",
+                    "Engine: Two Eurojet EJ200 turbofans, which offer a power of over 90 kN with afterburner. These allow it to supercruise at Mach 1.2."
+                ],
+                armament: {
+                    intro: "The Typhoon has an internal gun and 13 hardpoints for external armament, with a maximum payload of 7,500 kg.",
+                    list: [
+                        "Gun: An internal Mauser BK-27 27 mm gun.",
+                        "Air-to-Air Missiles: Short-range infrared-guided missiles such as IRIS-T and AIM-132 ASRAAM. For long-range combat, it uses AIM-120 AMRAAM and MBDA Meteor missiles, the latter offering an extended no-escape zone.",
+                        "Bombs: Can carry a variety of precision-guided bombs, including the Paveway series, JDAM, and anti-radar bombs such as Storm Shadow."
+                    ]
+                },
+                avionics: {
+                    intro: "Typhoon avionics include an integrated sensor system and a triple redundant fly-by-wire flight control system, which provides the pilot with excellent situational awareness.",
+                    list: [
+                        "Radar: The Captor-M passive electronically scanned array (PESA) radar, capable of detecting and tracking multiple targets simultaneously in dense combat environments. New variants will use the AESA Captor-E radar.",
+                        "Sighting System: A PIRATE (Passive Infrared Airborne Tracking Equipment) passive infrared sighting system that detects and tracks targets without emitting signals, increasing the aircraft's survivability.",
+                        "Electronic Warfare System: The integrated DASS (Defensive Aids Sub-System), which detects and counteracts radar and infrared threats."
+                    ]
+                },
+                operations: "The Typhoon is in active service in several European air forces, including the United Kingdom, Germany, Italy and Spain, and has been used in combat operations in Libya and Syria."
+            },
+            "Sukhoi_Su-57": {
+                name: "Sukhoi Su-57",
+                country: "Russia",
+                description: "The Su-57, also known as 'Felon', is a fifth-generation stealth multirole fighter aircraft designed to combine stealth technology with extreme agility and supercruise capability.",
+                history: "Developed under the PAK FA (Advanced Aviation Complex for Frontline Aviation) program, the Su-57 is Russia's response to fifth-generation fighter aircraft. The first flight took place in 2010. Its design aimed at reducing radar signature and extreme maneuverability, being the first Russian aircraft with thrust vectoring on all three axes.",
+                image_url: "Blueprints/Su-57bp.png",
+                tech_specs: [
+                    "Length: 20.1 m",
+                    "Wingspan: 14.1 m",
+                    "Maximum speed: Over Mach 2.0. Supercruise at Mach 1.5, allowing supersonic flight without afterburner.",
+                    "Engine: Two Saturn AL-41F1 turbofans, which offer a power of over 147 kN with afterburner. The engines have multi-directional thrust vectoring exhaust nozzles."
+                ],
+                armament: {
+                    intro: "To maintain its stealth properties, the Su-57 carries most of its weapons in internal compartments. It can carry a payload of up to 10,000 kg.",
+                    list: [
+                        "Gun: An internal GSh-30-1 30 mm gun.",
+                        "Air-to-Air Missiles: In the internal compartments it can carry short-range R-74M2 missiles and medium-range R-77M missiles.",
+                        "Air-to-Ground Missiles: Can launch cruise missiles and precision-guided bombs."
+                    ]
+                },
+                avionics: {
+                    intro: "The Su-57's avionics are based on a distributed sensor system, with multiple radars and optical sensors, which provide 360-degree situational awareness.",
+                    list: [
+                        "Radar: The N036 Byelka AESA radar, which uses multiple antennas, both in the front of the aircraft and in the wing, to cover an extended field of view.",
+                        "Sighting System: An electro-optical and infrared sighting system (IRST), which allows the detection of targets without emitting radar signals.",
+                        "Electronic Warfare System: The L402 countermeasures system, which offers protection against radar and infrared threats."
+                    ]
+                },
+                operations: "The Su-57 has been tested in combat conditions in Syria and entered limited service with the Russian Aerospace Forces in 2020. Its production is slow and the aircraft is still in the development phase."
+            },
+            "F-35_Lightning_II": {
+                name: "Lockheed Martin F-35 Lightning II",
+                country: "United States",
+                description: "The F-35 is a fifth-generation stealth multirole fighter aircraft with advanced surveillance and ground attack capabilities. It is produced in three main variants to adapt to various operational needs.",
+                history: "The F-35 was developed under the Joint Strike Fighter (JSF) program as a fifth-generation multirole aircraft to replace a wide range of fourth-generation fighter aircraft, including the F-16 and A-10. The first flight took place in 2006, and it entered service in 2015. There are three main variants: F-35A for conventional takeoffs and landings, F-35B with short takeoff and vertical landing, and F-35C for aircraft carriers.",
+                image_url: "Blueprints/F35bp.png",
+                tech_specs: [
+                    "Length: 15.7 m",
+                    "Wingspan: 10.7 m",
+                    "Maximum speed: Mach 1.6 (~1,960 km/h).",
+                    "Engine: A single Pratt & Whitney F135 turbofan, which offers a power of over 191 kN with afterburner."
+                ],
+                armament: {
+                    intro: "The F-35 carries most of its weapons in internal compartments to maintain its stealth properties. It can carry up to 8,165 kg of armament in total.",
+                    list: [
+                        "Gun: An internal GAU-22/A 25 mm gun (F-35A) or mounted externally (F-35B/C).",
+                        "Air-to-Air Missiles: In the internal compartments it can carry up to four AIM-120 AMRAAM missiles and can launch short-range AIM-9X Sidewinder missiles from the external pylons.",
+                        "Bombs: Can carry precision-guided bombs, including the JDAM series and GBU-12 Paveway II."
+                    ]
+                },
+                avionics: {
+                    intro: "The F-35 is equipped with an advanced avionics system that combines data from all sensors to provide the pilot with 360-degree situational awareness.",
+                    list: [
+                        "Radar: The AN/APG-81 active array (AESA) radar, capable of detecting and tracking targets at long ranges and with increased resistance to jamming.",
+                        "Sighting System: The EOTS (Electro-Optical Targeting System) electro-optical system, which allows the detection and tracking of ground and air targets from long distances.",
+                        "Warning System: The DAS (Distributed Aperture System) distributed sensor system, which offers the pilot a 360-degree view of the battlefield, including the detection of launched missiles."
+                    ]
+                },
+                operations: "The F-35 is in service with numerous countries, including the United States, Great Britain, Japan and Israel. It has been used in combat operations in Syria and Iraq."
+            },
+            "Mikoyan_MiG-29": {
+                name: "Mikoyan MiG-29",
+                country: "Russia",
+                description: "The MiG-29, designated by NATO as 'Fulcrum', is a fourth-generation fighter aircraft designed for air superiority and short-range combat. It is a robust and agile aircraft.",
+                history: "The MiG-29 was developed by the Mikoyan-Gurevich Design Bureau for the Soviet Air Force as a response to the new American fighter aircraft, F-15 and F-16. The first flight took place in 1977 and it entered service in 1982. It was designed to be an agile and robust fighter aircraft, capable of operating in difficult conditions and from short runways.",
+                image_url: "Blueprints/MiG-29bp.jpg",
+                tech_specs: [
+                    "Length: 17.3 m",
+                    "Wingspan: 11.4 m",
+                    "Maximum speed: Over Mach 2.25 (~2,400 km/h at altitude).",
+                    "Engine: Two Klimov RD-33 turbofans, which offer a power of over 81 kN with afterburner."
+                ],
+                armament: {
+                    intro: "The MiG-29 has an internal gun and seven external hardpoints for missiles and bombs. It can carry a payload of up to 3,500 kg.",
+                    list: [
+                        "Gun: An internal GSh-30-1 30 mm gun.",
+                        "Air-to-Air Missiles: Can carry short-range R-60 and R-73 missiles, as well as medium-range R-27 missiles."
+                    ]
+                },
+                avionics: {
+                    intro: "The MiG-29's avionics include a radar and an infrared sighting system, which allows target engagement from a distance. The cabin is relatively simple, but functional.",
+                    list: [
+                        "Radar: The N019 Look-Down/Shoot-Down radar, capable of detecting and tracking air targets at low altitudes.",
+                        "Sighting System: The infrared sighting system (IRST), which allows the detection of targets without emitting radar signals.",
+                        "Display: A Head-Up Display (HUD) that displays essential flight information."
+                    ]
+                },
+                operations: "The MiG-29 has been exported to numerous countries, including India, Poland and Germany. It has been used in various conflicts, including the Gulf War, the War in Yugoslavia and the conflicts in Ukraine."
+            },
+            "Dassault_Rafale": {
+                name: "Dassault Rafale",
+                country: "France",
+                description: "The Dassault Rafale is a multirole fighter aircraft, considered 'omnirole' due to its ability to perform a wide range of missions simultaneously, from air superiority to ground attack and nuclear deterrence.",
+                history: "The Rafale was developed by Dassault Aviation for the French Air and Naval Forces, after France withdrew from the Eurofighter program. The first flight took place in 1986, and it entered service in 2001. Its delta wing and canard (small wings in front) design makes it extremely maneuverable.",
+                image_url: "Blueprints/",
+                tech_specs: [
+                    "Length: 15.2 m",
+                    "Wingspan: 10.9 m",
+                    "Maximum speed: Over Mach 1.8 (~2,200 km/h).",
+                    "Engine: Two Snecma M88-2 turbofans, which offer a power of over 75 kN with afterburner. These allow it a supercruise speed of Mach 1.4."
+                ],
+                armament: {
+                    intro: "The Rafale has an internal gun and 14 external hardpoints for armament, with a maximum payload of 9,500 kg. It can carry a wide range of air-to-air and air-to-ground weapons.",
+                    list: [
+                        "Gun: An internal GIAT 30 30 mm gun.",
+                        "Air-to-Air Missiles: Short-range MICA (Modular Air-to-Air Missile) missiles, which can be guided with infrared or active radar. It can also carry METEOR ramjet missiles.",
+                        "Air-to-Ground Missiles: Can launch Scalp cruise missiles and Exocet anti-ship missiles."
+                    ]
+                },
+                avionics: {
+                    intro: "The Rafale's avionics are based on an open architecture, allowing easy modernization. Its integrated sensor system provides the pilot with superior situational awareness.",
+                    list: [
+                        "Radar: An RBE2 active electronically scanned array (AESA) radar, which offers the ability to track multiple targets simultaneously and increased resistance to jamming.",
+                        "Sighting System: The OSF (Optronique Secteur Frontal) electro-optical system, which allows the detection and identification of targets without emitting radar signals.",
+                        "Electronic Warfare System: The SpectrA system, which offers advanced protection against radar and infrared threats."
+                    ]
+                },
+                operations: "The Rafale has been used in combat operations in Libya, Mali, Iraq and Syria. It has been exported to countries such as Egypt, Qatar and India."
+            },
+            "Chengdu_J-20": {
+                name: "Chengdu J-20",
+                country: "China",
+                description: "J-20, nicknamed 'Mighty Dragon', is a fifth-generation stealth fighter aircraft designed for air superiority and long-range attacks. It is China's most advanced fighter jet.",
+                history: "Developed by Chengdu Aircraft Industry Group, the J-20 is China's response to the fifth-generation aircraft of the United States and Russia. The first flight took place in 2011 and it entered service in 2017. Its canard and V-tail design makes it an agile aircraft capable of operating at long ranges.",
+                image_url: "Blueprints/J-20bp.jpg",
+                tech_specs: [
+                    "Length: 21.2 m",
+                    "Wingspan: 13.0 m",
+                    "Maximum speed: Over Mach 2.0. It is estimated to have a supercruise capability at Mach 1.7.",
+                    "Engine: Two WS-10C or WS-15 turbofans (under development)."
+                ],
+                armament: {
+                    intro: "The J-20 has internal weapon bays to maintain its stealth properties. It can carry a payload of up to 11,000 kg.",
+                    list: [
+                        "Air-to-Air Missiles: In the internal compartments it can carry long-range PL-15 missiles and short-range PL-10 missiles.",
+                        "Bombs: It can carry precision-guided bombs, but details are unknown."
+                    ]
+                },
+                avionics: {
+                    intro: "The J-20's avionics are based on a distributed sensor system, with multiple radars and optical sensors, which provides 360-degree situational awareness.",
+                    list: [
+                        "Radar: An active electronically scanned array (AESA) radar of unknown type, which gives it the ability to detect and track targets at long ranges.",
+                        "Sighting System: An electro-optical and infrared sighting system (IRST) similar to that of the F-35 aircraft.",
+                        "Electronic Warfare System: Integrated electronic countermeasures (ECM) system, which provides protection against radar and infrared threats."
+                    ]
+                },
+                operations: "The J-20 has been used in patrol missions and combat exercises, but has not been used in combat operations."
+            },
+            "F-15_Eagle": {
+                name: "McDonnell Douglas F-15 Eagle",
+                country: "United States",
+                description: "The F-15 Eagle is an air superiority fighter, known for its agility, speed and exceptional combat performance. It was designed to dominate the airspace.",
+                history: "The F-15 was developed by McDonnell Douglas (now Boeing) for the U.S. Air Force, in response to the new Soviet fighter aircraft, the MiG-25. The first flight took place in 1972 and it entered service in 1976. It has achieved a remarkable record in combat, with over 100 confirmed victories and no losses.",
+                image_url: "Blueprints/f15bp.jpg",
+                tech_specs: [
+                    "Length: 19.4 m",
+                    "Wingspan: 13.0 m",
+                    "Maximum speed: Over Mach 2.5 (~2,665 km/h at altitude).",
+                    "Engine: Two Pratt & Whitney F100 turbofans, which offer a power of over 105 kN with afterburner."
+                ],
+                armament: {
+                    intro: "The F-15 has an internal gun and 11 external hardpoints for missiles and bombs. It can carry a payload of up to 10,400 kg.",
+                    list: [
+                        "Gun: An internal M61A1 Vulcan 20 mm gun.",
+                        "Air-to-Air Missiles: Medium-range AIM-7 Sparrow missiles, short-range AIM-9 Sidewinder missiles and medium-range AIM-120 AMRAAM missiles."
+                    ]
+                },
+                avionics: {
+                    intro: "The F-15's avionics include an advanced radar, an infrared sighting system and an electronic warfare system (ECM).",
+                    list: [
+                        "Radar: The AN/APG-63 radar, capable of detecting and tracking targets at long ranges.",
+                        "Sighting System: Infrared sighting system (IRST), which allows the detection of targets without emitting radar signals.",
+                        "Electronic Warfare System: Integrated electronic countermeasures (ECM) system, which provides protection against radar and infrared threats."
+                    ]
+                },
+                operations: "The F-15 has been exported to numerous countries, including Israel, Japan and Saudi Arabia. It has been used in conflicts, including the Gulf War, the Kosovo War and the Iraq War."
+            },
+            "F-16_Fighting_Falcon": {
+                name: "General Dynamics F-16 Fighting Falcon",
+                country: "United States",
+                description: "The F-16 is a multirole fighter aircraft, an agile and versatile aircraft that has become a mainstay of air forces around the world.",
+                history: "The F-16 was developed by General Dynamics (now Lockheed Martin) for the U.S. Air Force, as a lightweight and agile fighter aircraft. The first flight took place in 1974 and it entered service in 1978. It was designed to be a low-cost fighter aircraft, with a strong emphasis on maneuverability and reliability.",
+                image_url: "Blueprints/f16bp.jpg",
+                tech_specs: [
+                    "Length: 15.0 m",
+                    "Wingspan: 9.5 m",
+                    "Maximum speed: Over Mach 2.0 (~2,120 km/h at altitude).",
+                    "Engine: A single Pratt & Whitney F100 or General Electric F110 turbofan, which offers a power of over 128 kN with afterburner."
+                ],
+                armament: {
+                    intro: "The F-16 has an internal gun and 11 external hardpoints for missiles and bombs. It can carry a payload of up to 9,200 kg.",
+                    list: [
+                        "Gun: An internal M61A1 Vulcan 20 mm gun.",
+                        "Air-to-Air Missiles: Short-range AIM-9 Sidewinder missiles and medium-range AIM-120 AMRAAM missiles.",
+                        "Bombs: It can carry a variety of precision-guided bombs, including JDAM and GBU-12 Paveway II."
+                    ]
+                },
+                avionics: {
+                    intro: "The F-16's avionics have evolved over the years, from a simple system to an advanced system, with a pulse-Doppler radar and a fly-by-wire flight control system.",
+                    list: [
+                        "Radar: The AN/APG-68 radar, capable of detecting and tracking targets at long ranges and providing high-resolution images of the earth's surface.",
+                        "Sighting System: Infrared sighting system (IRST), which allows the detection of targets without emitting radar signals.",
+                        "Electronic Warfare System: Integrated electronic countermeasures (ECM) system, which provides protection against radar and infrared threats."
+                    ]
+                },
+                operations: "The F-16 has been exported to numerous countries and has been used in conflicts, including the Gulf War, the Kosovo War and the Iraq War."
+            },
+            "Mikoyan_MiG-31": {
+                name: "Mikoyan MiG-31",
+                country: "Russia",
+                description: "The MiG-31, designated by NATO as 'Foxhound', is a long-range interceptor designed to destroy airborne targets at high altitudes and supersonic speeds. It is the first fighter aircraft with a passive electronically scanned array (PESA) radar.",
+                history: "The MiG-31 was developed by the Mikoyan-Gurevich Design Bureau for the Soviet Air Force, as a replacement for the MiG-25. The first flight took place in 1975 and it entered service in 1982. It was designed to be a long-range interceptor, capable of patrolling an extended area and intercepting bombers and reconnaissance aircraft at high altitudes.",
+                image_url: "Blueprints/",
+                tech_specs: [
+                    "Length: 22.6 m",
+                    "Wingspan: 13.5 m",
+                    "Maximum speed: Over Mach 2.8 (~3,000 km/h at altitude).",
+                    "Engine: Two Soloviev D-30F6 turbofans, which offer a power of over 152 kN with afterburner."
+                ],
+                armament: {
+                    intro: "The MiG-31 has an internal gun and 8 hardpoints for air-to-air missiles. It can carry a payload of up to 5,000 kg.",
+                    list: [
+                        "Gun: An internal GSh-6-23 23 mm gun.",
+                        "Air-to-Air Missiles: It can carry long-range R-33, medium-range R-40 and short-range R-60 missiles."
+                    ]
+                },
+                avionics: {
+                    intro: "The MiG-31's avionics include an advanced passive electronically scanned array (PESA) radar, which allows it to simultaneously track multiple targets and engage them at long ranges.",
+                    list: [
+                        "Radar: The Zaslon PESA radar, capable of detecting and tracking up to 10 targets simultaneously at a distance of over 200 km.",
+                        "Sighting System: Infrared sighting system (IRST), which allows the detection of targets without emitting radar signals.",
+                        "Datelink: A datalink system that allows communication with other MiG-31 aircraft, forming a network of interceptors."
+                    ]
+                },
+                operations: "The MiG-31 is in active service in the Russian Aerospace Forces and has been used in patrol and interception operations."
+            },
+            "Shenyang_J-31": {
+                name: "Shenyang J-31",
+                country: "China",
+                description: "The J-31, also called FC-31 Gyrfalcon, is a fifth-generation stealth multirole fighter aircraft designed for export and carrier operations.",
+                history: "The J-31 was developed by Shenyang Aircraft Corporation as an alternative to the Chengdu J-20 aircraft. The first flight took place in 2012 and it entered service in 2017. It was designed to be a stealth fighter aircraft, capable of operating on aircraft carriers. It has been presented at several international air shows as an alternative to the F-35.",
+                image_url: "Blueprints/",
+                tech_specs: [
+                    "Length: 17.3 m",
+                    "Wingspan: 11.5 m",
+                    "Maximum speed: Over Mach 1.8.",
+                    "Engine: Two Guizhou WS-13 turbofans."
+                ],
+                armament: {
+                    intro: "The J-31 has internal weapon bays to maintain its stealth properties. It can carry a payload of up to 8,000 kg.",
+                    list: [
+                        "Air-to-Air Missiles: In the internal compartments it can carry long-range PL-15 missiles and short-range PL-10 missiles."
+                    ]
+                },
+                avionics: {
+                    intro: "The J-31's avionics include an AESA radar and an infrared sighting system. The avionics system is advanced and integrated.",
+                    list: [
+                        "Radar: An active electronically scanned array (AESA) radar of unknown type, which gives it the ability to detect and track targets at long ranges.",
+                        "Sighting System: Electro-optical and infrared sighting system (IRST) similar to that of the F-35 aircraft.",
+                        "Electronic Warfare System: Integrated electronic countermeasures (ECM) system, which provides protection against radar and infrared threats."
+                    ]
+                },
+                operations: "The J-31 has been presented at air shows and has been flight tested, but has not yet entered active service."
+            },
+            "Boeing_F-18_Super_Hornet": {
+                name: "Boeing F/A-18 Super Hornet",
+                country: "United States",
+                description: "The F/A-18 Super Hornet is a multirole fighter aircraft, with the ability to carry bombs and missiles, adapted for carrier operations. It is an improved variant of the F/A-18 Hornet.",
+                history: "The F/A-18 Super Hornet was developed as an improved variant of the F/A-18 Hornet aircraft. The first flight took place in 1995 and it entered service in 1999. It was designed to replace the F-14 Tomcat and A-6 Intruder aircraft, having a larger weapon carrying capacity and a longer range.",
+                image_url: "Blueprints/",
+                tech_specs: [
+                    "Length: 18.3 m",
+                    "Wingspan: 13.6 m",
+                    "Maximum speed: Mach 1.8 (~2,200 km/h).",
+                    "Engine: Two General Electric F414 turbofans, which offer a power of over 98 kN with afterburner."
+                ],
+                armament: {
+                    intro: "The Super Hornet has an internal gun and 11 external hardpoints for missiles and bombs. It can carry a payload of up to 8,050 kg.",
+                    list: [
+                        "Gun: An internal M61A1 Vulcan 20 mm gun.",
+                        "Air-to-Air Missiles: Short-range AIM-9 Sidewinder missiles and medium-range AIM-120 AMRAAM missiles.",
+                        "Bombs: It can carry a variety of precision-guided bombs, including JDAM and GBU-12 Paveway II."
+                    ]
+                },
+                avionics: {
+                    intro: "The Super Hornet's avionics include an AESA radar, an infrared sighting system and an advanced electronic warfare system, adapted for carrier operations.",
+                    list: [
+                        "Radar: The AN/APG-79 radar with active antenna (AESA), capable of detecting and tracking targets at long ranges and with increased resistance to jamming.",
+                        "Sighting System: Infrared sighting system (IRST), which allows the detection of targets without emitting radar signals.",
+                        "Electronic Warfare System: Integrated electronic countermeasures (ECM) system, which provides protection against radar and infrared threats."
+                    ]
+                },
+                operations: "The Super Hornet has been used in combat operations in Iraq, Afghanistan and Syria. It is an essential aircraft for the carrier operations of the U.S. Naval Forces."
+            },
+            "Sukhoi_Su-30SM": {
+                name: "Sukhoi Su-30SM",
+                country: "Russia",
+                description: "The Su-30SM is a modernized variant of the Su-30 multirole aircraft, with exceptional maneuverability and advanced systems.",
+                history: "The Su-30SM is a highly advanced version of the Su-30 fighter aircraft, based on the Su-30MKI model. It was developed specifically for the Russian Aerospace Forces, integrating the latest avionics and weapons systems. It entered production in 2012 and has been used in combat operations in Syria.",
+                image_url: "Blueprints/",
+                tech_specs: [
+                    "Length: 21.9 m",
+                    "Wingspan: 14.7 m",
+                    "Maximum speed: Over Mach 2.0 (~2,120 km/h at altitude).",
+                    "Engine: Two Saturn AL-31FP turbofans with thrust vectoring, which gives it exceptional maneuverability."
+                ],
+                armament: {
+                    intro: "The Su-30SM is capable of carrying a wide range of air-to-air and air-to-ground weapons on 12 external hardpoints. It can carry up to 8,000 kg of armament.",
+                    list: [
+                        "Gun: A 30 mm GSh-30-1 gun.",
+                        "Air-to-Air Missiles: Short-range R-73 and medium-range R-77 missiles.",
+                        "Air-to-Ground Missiles: Anti-radar missiles, anti-ship missiles, guided bombs and cruise missiles."
+                    ]
+                },
+                avionics: {
+                    intro: "The aircraft is equipped with a passive electronically scanned array (PESA) radar and an advanced electro-optical targeting system. The cabin is modern, with LCD screens.",
+                    list: [
+                        "Radar: The BARS-R PESA radar, capable of tracking multiple targets simultaneously.",
+                        "Sighting System: Optical and infrared equipment for detecting and identifying targets at long ranges.",
+                        "Navigation: GLONASS/GPS satellite navigation system."
+                    ]
+                },
+                operations: "The Su-30SM has been used in operations in Syria and other conflicts, demonstrating its effectiveness as a multirole aircraft."
+            },
+            "Sukhoi_Su-33": {
+                name: "Sukhoi Su-33",
+                country: "Russia",
+                description: "The Su-33, designated by NATO as 'Flanker-D', is a naval fighter aircraft designed for carrier operations, with folding wings and reinforced landing gear.",
+                history: "The development of the Su-33 began in the late 1970s to equip the new class of Soviet aircraft carriers. It first flew in 1987 and entered service aboard the Admiral Kuznetsov aircraft carrier. It is a variant of the Su-27, adapted for the unique conditions of naval operations.",
+                image_url: "Blueprints/",
+                tech_specs: [
+                    "Length: 21.9 m",
+                    "Wingspan: 14.7 m (7.4 m with wings folded)",
+                    "Maximum speed: Mach 2.17 (~2,300 km/h).",
+                    "Engine: Two Saturn AL-31F Series 3 turbofans, optimized for naval operations."
+                ],
+                armament: {
+                    intro: "The Su-33 can carry a variety of weapons, including short- and medium-range air-to-air missiles, as well as guided bombs and missiles. It has 12 external hardpoints.",
+                    list: [
+                        "Gun: A 30 mm GSh-30-1 gun.",
+                        "Air-to-Air Missiles: R-27 and R-73 missiles.",
+                        "Bombs: Unguided bombs and air-to-surface missiles."
+                    ]
+                },
+                avionics: {
+                    intro: "Its avionics system is adapted for carrier operations, with a radar that can track air and sea targets. The cabin is similar to that of the Su-27.",
+                    list: [
+                        "Radar: The N001K radar, with air-to-air and air-to-surface capabilities.",
+                        "Sighting System: Infrared sighting system for target detection.",
+                        "Navigation: Navigation system with the aircraft carrier for precise landings."
+                    ]
+                },
+                operations: "The Su-33 is mainly used by the Russian Northern Fleet, operating from the Admiral Kuznetsov aircraft carrier. It has been deployed in combat missions in Syria, from where it has carried out air strikes."
+            },
+            "Sukhoi_Su-35": {
+                name: "Sukhoi Su-35",
+                country: "Russia",
+                description: "The Su-35 is an air superiority fighter, super-maneuverable, with a modernized design and advanced systems. It is considered a 4++ generation aircraft.",
+                history: "The Su-35 was developed by Sukhoi as a deep modernization of the Su-27 aircraft. The first flight took place in 2008 and it entered service in 2014. It was designed to be a multirole fighter aircraft, with an increased weapon carrying capacity and exceptional maneuverability.",
+                image_url: "Blueprints/",
+                tech_specs: [
+                    "Length: 21.9 m",
+                    "Wingspan: 15.3 m",
+                    "Maximum speed: Mach 2.25 (~2,400 km/h).",
+                    "Engine: Two Saturn AL-41F1S turbofans, which offer a power of over 142 kN with afterburner. These engines with 3D thrust vectoring give it increased maneuverability."
+                ],
+                armament: {
+                    intro: "The Su-35 has an internal gun and 12 external hardpoints for missiles and bombs. It can carry a payload of up to 8,000 kg.",
+                    list: [
+                        "Gun: A 30 mm GSh-30-1 gun.",
+                        "Air-to-Air Missiles: Short-range R-73 and medium-range R-77 missiles.",
+                        "Bombs: Guided and unguided bombs, anti-radar and anti-ship missiles."
+                    ]
+                },
+                avionics: {
+                    intro: "The Su-35's avionics include a passive electronically scanned array (PESA) radar and an infrared sighting system. It has a modern cockpit with LCD screens.",
+                    list: [
+                        "Radar: The Irbis-E PESA radar, capable of detecting targets at a distance of over 400 km and tracking up to 30 targets simultaneously.",
+                        "Sighting System: The OLS-35 infrared sighting system, which allows the detection of targets without emitting radar signals.",
+                        "Electronic Warfare System: The Khibiny countermeasures system, which offers advanced protection against radar threats."
+                    ]
+                },
+                operations: "The Su-35 has been used in combat operations in Syria and other conflicts, demonstrating its combat capabilities and reliability."
+            },
+            "Grumman_F-14_Tomcat": {
+                name: "Grumman F-14 Tomcat",
+                country: "United States",
+                description: "The F-14 Tomcat is a supersonic, twin-engine, variable-sweep wing fighter aircraft, known for its variable-geometry wings, which allow it to adjust its shape in flight. It was a mainstay of the U.S. Naval Forces.",
+                history: "The F-14 was developed to equip the United States Naval Forces and replace the F-4 Phantom II aircraft. It entered service in 1974 and became a symbol of American air power, being immortalized in the movie 'Top Gun'. It served as an air superiority fighter and fleet interceptor until its retirement in 2006.",
+                image_url: "Blueprints/",
+                tech_specs: [
+                    "Length: 19.1 m",
+                    "Wingspan: 11.6 m (with wings swept back) - 19.5 m (with wings forward)",
+                    "Maximum speed: Over Mach 2.34 (~2,500 km/h at altitude).",
+                    "Engine: Two Pratt & Whitney TF30 (initial models) or General Electric F110 (later models) turbofans, which offered a power of over 100 kN with afterburner."
+                ],
+                armament: {
+                    intro: "The F-14 was designed to carry long-range missiles and was most effective with the AIM-54 Phoenix missile. It can carry up to 6,577 kg of armament on 10 external hardpoints.",
+                    list: [
+                        "Gun: An internal M61A1 Vulcan 20 mm gun, installed in the lower part of the aircraft.",
+                        "Air-to-Air Missiles: Long-range AIM-54 Phoenix, medium-range AIM-7 Sparrow and short-range AIM-9 Sidewinder missiles."
+                    ]
+                },
+                avionics: {
+                    intro: "The F-14 was equipped with a powerful radar and an advanced sighting system for intercepting targets at long ranges. The crew consists of a pilot and a weapon systems officer (RIO).",
+                    list: [
+                        "Radar: The AWG-9 radar, with a detection range of over 160 km for aircraft-type targets.",
+                        "Sighting System: Electro-optical and infrared systems for identifying targets from a distance.",
+                        "Countermeasures: Electronic countermeasures and chaff and flare dispensing systems."
+                    ]
+                },
+                operations: "The F-14 served in the Vietnam War, the Gulf War and other conflicts. The only other operator was Iran, which acquired F-14 aircraft before the Iranian Revolution."
+            },
+            "Sukhoi_Su-47": {
+                name: "Sukhoi Su-47 Berkut",
+                country: "Russia",
+                description: "The Su-47 was a technology demonstrator aircraft, notable for its forward-swept wings, which offered superior maneuverability at low speeds.",
+                history: "The development of the Su-47 began in the 1980s, under the name S-32. It was designed as a technology demonstrator, with the aim of exploring the benefits of forward-swept wings. The first flight took place in 1997. Although it did not enter mass production, the technologies tested on the Su-47 were used in the development of other Russian aircraft, including the Su-57.",
+                image_url: "Blueprints/",
+                tech_specs: [
+                    "Length: 22.6 m",
+                    "Wingspan: 16.7 m",
+                    "Maximum speed: Mach 2.5 (estimated).",
+                    "Engine: Two Soloviev D-30F6 turbofans."
+                ],
+                armament: {
+                    intro: "Being a technology demonstrator, the Su-47 was not equipped with operational weapons, but its design included internal weapon bays to maintain its stealth properties.",
+                    list: [
+                        "Internal Weapons: Internal compartments for short- and medium-range air-to-air missiles.",
+                        "External Weapons: It was not designed to carry weapons on external hardpoints."
+                    ]
+                },
+                avionics: {
+                    intro: "The avionics systems of the Su-47 were mainly intended for testing advanced technologies and not for combat operations. It included a digital flight control system and a passive electronically scanned array radar.",
+                    list: [
+                        "Control System: Fly-by-wire digital flight control system.",
+                        "Radar: The N011M Bars radar, to test detection and tracking capabilities.",
+                        "Sighting System: Infrared sighting systems for testing target recognition capabilities."
+                    ]
+                },
+                operations: "The Su-47 performed numerous test flights in the 2000s to evaluate the maneuverability and aerodynamic properties of forward-swept wings."
+            },
+             "Sukhoi_Su-27": {
+                name: "Sukhoi Su-27",
+                country: "Russia",
+                description: "The Su-27, designated by NATO as 'Flanker', is an air superiority fighter, considered one of the most maneuverable aircraft in the world.",
+                history: "The development of the Su-27 began in the 1970s, in response to new American fighter aircraft, such as the F-15 Eagle. The first flight took place in 1977, but it did not enter service until 1985, after a long period of testing and development. The Su-27 became a symbol of Soviet air superiority and formed the basis for many subsequent aircraft, including the Su-30, Su-33 and Su-35.",
+                image_url: "Blueprints/",
+                tech_specs: [
+                    "Length: 21.9 m",
+                    "Wingspan: 14.7 m",
+                    "Maximum speed: Over Mach 2.35 (~2,500 km/h at altitude).",
+                    "Engine: Two Saturn AL-31F turbofans, which offer a power of over 122 kN with afterburner."
+                ],
+                armament: {
+                    intro: "The Su-27 is equipped with an automatic gun and 10 external hardpoints for missiles and bombs. It can carry up to 4,430 kg of armament.",
+                    list: [
+                        "Gun: A 30 mm GSh-30-1 gun, with a high rate of fire.",
+                        "Air-to-Air Missiles: Short-range R-73 and medium-range R-27 missiles."
+                    ]
+                },
+                avionics: {
+                    intro: "The avionics system of the Su-27 was advanced for its time, including a powerful radar and an infrared sighting system. The cockpit is relatively simple, but efficient.",
+                    list: [
+                        "Radar: The N001 radar, capable of tracking multiple targets simultaneously.",
+                        "Infrared Sighting System (IRST): A passive sighting system, which allows the detection of targets without emitting radar signals.",
+                        "Display: A Head-Up Display (HUD) for displaying flight information."
+                    ]
+                },
+                operations: "The Su-27 has been used in numerous conflicts and exercises, demonstrating its agility and air superiority. It is still in service in many countries, including Russia, China and India."
+            },
+            "Tupolev_Tu-160": {
+                name: "Tupolev Tu-160",
+                country: "Russia",
+                description: "The Tu-160, designated by NATO as 'Blackjack', is a supersonic strategic bomber with variable geometry, being the largest and fastest bomber in the world.",
+                history: "The development of the Tu-160 began in the 1970s, in response to the American B-1 Lancer strategic bombers. The first flight took place in 1981, and the aircraft entered service in 1987. It was designed to carry nuclear and conventional weapons over long distances, having an impressive range and supersonic speed.",
+                image_url: "Blueprints/",
+                tech_specs: [
+                    "Length: 54.1 m",
+                    "Wingspan: 55.7 m (with wings extended) - 35.6 m (with wings folded)",
+                    "Maximum speed: Over Mach 2.05 (~2,220 km/h).",
+                    "Engine: Four Kuznetsov NK-32 turbofans, which offer a power of over 245 kN each with afterburner."
+                ],
+                armament: {
+                    intro: "The Tu-160 is equipped with two internal weapon bays, which can carry a variety of missiles and bombs, including cruise missiles and nuclear bombs.",
+                    list: [
+                        "Cruise Missiles: It can carry Kh-55 and Kh-101 cruise missiles.",
+                        "Nuclear and Conventional Bombs: It can carry nuclear bombs and conventionally guided bombs."
+                    ]
+                },
+                avionics: {
+                    intro: "The avionics of the Tu-160 include an advanced radar, satellite navigation systems and electronic countermeasures systems to ensure its survival in hostile environments.",
+                    list: [
+                        "Radar: The Obzor-K radar, capable of detecting targets at long ranges.",
+                        "Navigation Systems: GLONASS/GPS satellite navigation systems for precise long-distance flights.",
+                        "Countermeasures Systems: Electronic countermeasures systems for protection against radar threats."
+                    ]
+                }
+            },
+            "Mitsubish_F-2":{
+                name: "Mitsubishi F-2",
+                country: "Japan",
+                description: "The F-2 is a multirole fighter aircraft developed jointly by Mitsubishi Heavy Industries and Lockheed Martin. It is based on the F-16 design but incorporates advanced technologies and materials.",
+                history: "The F-2 was developed in the 1990s to replace the aging F-1 aircraft of the Japan Air Self-Defense Force. The first flight took place in 1995, and it entered service in 2000. It features a larger wing area, advanced avionics, and the ability to carry a wider range of weapons compared to the F-16.",
+                image_url: "Blueprints/",
+                tech_specs: [
+                    "Length: 15.5 m",
+                    "Wingspan: 11.1 m",
+                    "Maximum speed: Over Mach 2.0 (~2,120 km/h at altitude).",
+                    "Engine: A single General Electric F110-GE-129 turbofan, which offers a power of over 128 kN with afterburner."
+                ],
+                armament: {
+                    intro: "The F-2 has an internal gun and 9 external hardpoints for missiles and bombs. It can carry a payload of up to 7,000 kg.",
+                    list: [
+                        "Gun: An internal M61A1 Vulcan 20 mm gun.",
+                        "Air-to-Air Missiles: Short-range AIM-9 Sidewinder missiles and medium-range AIM-120 AMRAAM missiles.",
+                        "Bombs: It can carry a variety of precision-guided bombs, including JDAM and GBU-12 Paveway II."
+                    ]
+                },
+                avionics: {
+                    intro: "The F-2's avionics include an advanced radar, an infrared sighting system, and a digital fly-by-wire flight control system.",
+                    list: [
+                        "Radar: The J/APG-1 active electronically scanned array (AESA) radar, capable of detecting and tracking targets at long ranges.",
+                        "Sighting System: Infrared sighting system (IRST), which allows the detection of targets without emitting radar signals.",
+                        "Flight Control System: A digital fly-by-wire system that enhances maneuverability and stability."
+                    ]
+                },
+            },
+            "B2" : {
+                name: "B2 Spirit" ,
+                country: "United States" ,
+                description: "The B-2 Spirit is a heavy strategic bomber. It uses stealth technology to penetrate anti-aircraft defenses. It can deliver both conventional and nuclear munitions.",
+                history: "It was designed during the Cold War. The first flight occurred in July 1989. It entered service in 1997. It has been used in combat operations, including in Kosovo and Iraq.",
+                image_url: "Blueprints/",
+                tech_specs: [
+                    "Length: 20.9 m",
+                    "Wingspan: 52.12 m",
+                    "Maximum speed: High subsonic (approx. 1,010 km/h)",
+                    "Ceiling: 15,240 m", "Range: Approximately 9,600 km without refueling.",
+                    "Engine: Four General Electric F118-GE-100 turbofans, each providing 77 kN of thrust."
+                ],
+                armament:{
+                    intro: "The B-2 can carry a payload of up to 18,144 kg",
+                    list: [
+                        "It can deliver precision-guided JDAM bombs.",
+                         "It can deliver nuclear bombs, such as the B83.",
+                          "It can carry up to eighty 230 kg bombs (Mk 82 JDAM)."
+                    ]
+                },
+                avionics:{
+                    intro: "The B-2 bomber's stealth characteristics make it difficult to detect",
+                    list: [
+                        "Low-Observability Technology: This technology minimizes radar, infrared, acoustic, and visual signatures.",
+                        "Design: The B-2 has a flying-wing design.",
+                        "Flight Control System: It uses a digital fly-by-wire system to manage flight",
+                    ],
+                },
+            }
+        };
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            const results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const planeKey = getUrlParameter('plane');
+            const planeData = planes[planeKey];
+            const detailsContainer = document.getElementById('plane-details');
+            
+            if (planeData) {
+            let htmlContent = `
+                 <div class="image-container">
+                 <img src="${planeData.image_url}" alt="${planeData.name}">
+                 </div>
+                <h1 >${planeData.name}</h1>
+                <h2 >${planeData.country}</h2>
+                <p >${planeData.description}</p>
+                `;
+
+            if (planeData.history) {
+                htmlContent += `
+                <h3 >Development and History</h3>
+                <p class="info">${planeData.history}</p>
+                `;
+            }
+
+            if (planeData.tech_specs) {
+                htmlContent += `
+                <h3 class="">Technical Characteristics</h3>
+                <ul class="">
+                    ${planeData.tech_specs.map(spec => `<li>${spec}</li>`).join('')}
+                </ul>
+                `;
+            }
+
+            if (planeData.armament) {
+                htmlContent += `
+                <h3 class="text-xl font-bold mb-3 border-b border-gray-600 pb-2">Armament and Capabilities</h3>
+                <p class="mb-4">${planeData.armament.intro}</p>
+                <ul class="list-disc list-inside space-y-2 mb-6">
+                    ${planeData.armament.list.map(arm => `<li>${arm}</li>`).join('')}
+                </ul>
+                `;
+            }
+
+            if (planeData.avionics) {
+                htmlContent += `
+                <h3 class="">Radar Systems and Avionics</h3>
+                <p class="">${planeData.avionics.intro}</p>
+                <ul class="list-disc list-inside space-y-2">
+                    ${planeData.avionics.list.map(avio => `<li>${avio}</li>`).join('')}
+                </ul>
+                `;
+            }
+
+    if (planeData.operations) {
+                htmlContent += `
+                <h3>Testing and Operations</h3>
+                <p>${planeData.operations}</p>`;
+            }
+
+            detailsContainer.innerHTML = htmlContent;
+            } else {
+            detailsContainer.innerHTML = `<p class="error-404">Plane not found.</p>`;
+            }
+        });
+        </script>
+</body>
+</html>

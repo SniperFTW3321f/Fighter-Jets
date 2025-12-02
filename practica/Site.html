@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechShop - Produse Tech Inovatoare</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="font-sans antialiased text-gray-800 bg-gray-50">
+<style> 
+        html {
+            scroll-behavior: smooth;
+        }
+        .carousel-container {
+            overflow: hidden; 
+            position: relative;
+        }
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out; 
+        }
+        .carousel-item {
+            min-width: 100%;
+            box-sizing: border-box; 
+            margin-left: 100px;
+        }
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5); 
+            color: white;
+            padding: 1rem;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .carousel-button.prev {
+            left: 1rem;
+        }
+        .carousel-button.next {
+            right: 1rem;
+        }
+       
+        .product-card:hover {
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); 
+        }
+       
+        th, td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #e2e8f0; 
+        }
+        th {
+            text-align: left;
+            font-weight: 600;
+        }</style>
+    <!-- Header Section (AS31, AS32, AS33) -->
+    <header class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white p-6 shadow-lg">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+            <h1 class="text-4xl font-extrabold tracking-tight mb-4 md:mb-0">TechShop</h1>
+            <nav>
+                <ul class="flex flex-wrap justify-center space-x-6">
+                    <li><a href="#despre-magazin" class="hover:text-blue-200 transition duration-300 font-medium text-lg">Despre Magazin</a></li>
+                    <li><a href="#produse" class="hover:text-blue-200 transition duration-300 font-medium text-lg">Produse</a></li>
+                    <li><a href="#tabel-comparativ" class="hover:text-blue-200 transition duration-300 font-medium text-lg">Comparație</a></li>
+                    <li><a href="#comanda-demo" class="hover:text-blue-200 transition duration-300 font-medium text-lg">Comandă Demo</a></li>
+                    <li><a href="#slider-produse" class="hover:text-blue-200 transition duration-300 font-medium text-lg">Galerie</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8 mt-8">
+
+        <!-- Despre Magazin Section (AS32) -->
+        <section id="despre-magazin" class="bg-white p-8 rounded-lg shadow-md mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-blue-500 pb-2">Despre Magazinul Nostru</h2>
+            <p class="text-lg leading-relaxed text-gray-700 mb-4">
+                La <strong>TechShop</strong>, ne dedicăm aducerii celor mai inovatoare și de ultimă generație produse tech direct la ușa dumneavoastră. Misiunea noastră este de a oferi soluții inteligente și eficiente pentru a îmbunătăți viața digitală a clienților noștri. Fie că sunteți un pasionat de tehnologie, un profesionist care caută instrumente de înaltă performanță, sau pur și simplu cineva care dorește să exploreze viitorul, <em>TechShop</em> este destinația perfectă.
+            </p>
+            <p class="text-lg leading-relaxed text-gray-700">
+                Credem că tehnologia ar trebui să fie accesibilă și ușor de utilizat pentru toată lumea. De aceea, selectăm cu atenție fiecare produs, asigurându-ne că îndeplinește cele mai înalte standarde de calitate și inovație. Vă invităm să explorați gama noastră variată și să descoperiți tehnologia care vă va transforma experiența zilnică.
+            </p>
+        </section>
+
+        <!-- Produse Section (AS33, AS34, AS37 - card styling and hover) -->
+        <section id="produse" class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8 border-b-2 border-blue-500 pb-2">Produsele Noastre</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Produs 1: ASUS ROG Strix Scar 18 -->
+                <div class="product-card bg-white p-6 rounded-lg shadow-md transform transition duration-300 ease-in-out">
+                    <img src="laptop.jpg" alt="ASUS ROG Strix Scar 18" class="w-full h-480 object-cover rounded-md mb-4">
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-2">ASUS ROG Strix Scar 18</h3>
+                    <p class="text-gray-700 mb-4">Un laptop de gaming extrem de puternic, cu un ecran mare și performanțe de top pentru cei mai exigenți gameri.</p>
+                    <ul class="list-disc list-inside text-gray-600 mb-4">
+                        <li>Procesor: Intel Core i9-14900HX</li>
+                        <li>RAM: 32GB DDR5 5600MHz</li>
+                        <li>Stocare: 2TB PCIe Gen4 SSD</li>
+                        <li>Display: 18" QHD (2560x1600) 240Hz ROG Nebula Display</li>
+                    </ul>
+                    <div class="price-display text-right text-xl font-bold text-blue-600" data-price-mdl="55000"></div>
+                </div>
+
+                <!-- Produs 2: Samsung Galaxy S24 Ultra -->
+                <div class="product-card bg-white p-6 rounded-lg shadow-md transform transition duration-300 ease-in-out">
+                    <img src="phone.jpg" alt="Samsung Galaxy S24 Ultra" class="w-full h-480 object-cover rounded-md mb-4">
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-2">Samsung Galaxy S24 Ultra</h3>
+                    <p class="text-gray-700 mb-4">Cel mai nou flagship Samsung, cu inteligență artificială avansată, cameră revoluționară și S Pen integrat.</p>
+                    <ul class="list-disc list-inside text-gray-600 mb-4">
+                        <li>Ecran: 6.8" Dynamic AMOLED 2X, 120Hz</li>
+                        <li>Cameră: 200MP Quad-Camera cu Zoom Optic 10x</li>
+                        <li>Baterie: 5000mAh</li>
+                        <li>Procesor: Snapdragon 8 Gen 3 for Galaxy</li>
+                    </ul>
+                    <div class="price-display text-right text-xl font-bold text-blue-600" data-price-mdl="21000"></div>
+                </div>
+
+                <!-- Produs 3: Sony WH-1000XM5 -->
+                <div class="product-card bg-white p-6 rounded-lg shadow-md transform transition duration-300 ease-in-out">
+                      <br>
+                        <br>
+                         <br>
+                    <img src="headphones.avif" alt="Sony WH-1000XM5" class="w-full h-480 object-cover rounded-md mb-4">
+                       <br>
+                    <br>
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-2">Sony WH-1000XM5</h3>
+                    <p class="text-gray-700 mb-4">Căști cu anulare a zgomotului de top, sunet excepțional și confort superior, perfecte pentru audiții lungi.</p>
+                    <ul class="list-disc list-inside text-gray-600 mb-4">
+                        <li>Autonomie: Până la 30 de ore</li>
+                        <li>Anulare zgomot: Procesor QN1 și V1</li>
+                        <li>Conexiune: Bluetooth 5.2 (multipoint)</li>
+                        <li>Microfon: 8 microfoane pentru apeluri clare</li>
+                    </ul>
+                    <div class="price-display text-right text-xl font-bold text-blue-600" data-price-mdl="5600"></div>
+                </div>
+
+                <!-- Produs 4: Apple Watch Ultra 2 -->
+                <div class="product-card bg-white p-6 rounded-lg shadow-md transform transition duration-300 ease-in-out">
+                    <img src="watch.avif" alt="Apple Watch Ultra 2" class="w-full h-480 object-cover rounded-md mb-4">
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-2">Apple Watch Ultra 2</h3>
+                    <p class="text-gray-700 mb-4">Un smartwatch robust și plin de funcții, conceput pentru aventură și performanță maximă, cu un ecran incredibil de luminos.</p>
+                    <ul class="list-disc list-inside text-gray-600 mb-4">
+                        <li>Ecran: Retina LTPO OLED, până la 3000 niți</li>
+                        <li>GPS: GPS de precizie dual-frecvență</li>
+                        <li>Rezistență la apă: 100m, Certificare EN13319</li>
+                        <li>Procesor: S9 SiP</li>
+                    </ul>
+                    
+                    <div class="price-display text-right text-xl font-bold text-blue-600" data-price-mdl="8500"></div>
+                </div>
+
+                <!-- Produs 5: Wacom Intuos Pro M -->
+                <div class="product-card bg-white p-6 rounded-lg shadow-md transform transition duration-300 ease-in-out">
+                     <br>
+                        
+                        
+                    <img src="tablet.jpg" alt="Wacom Intuos Pro M" class="w-full h-480 object-cover rounded-md mb-4">
+                      <br>
+                        <br>
+                        <br>
+                           <br>
+                        
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-2">Wacom Intuos Pro M</h3>
+                    <p class="text-gray-700 mb-4">Tableta grafică profesională standard în industrie, oferind precizie și control excepțional pentru artiști digitali.</p>
+                    <ul class="list-disc list-inside text-gray-600 mb-4">
+                        <br>
+                        <li>Suprafață activă: 224 x 148 mm</li>
+                        <li>Nivele de presiune: 8192 cu recunoaștere înclinare</li>
+                        <li>Conectivitate: USB-C, Bluetooth</li>
+                        <li>Include: Wacom Pro Pen 2</li>
+                    </ul>
+                    <br>
+                    <div class="price-display text-right text-xl font-bold text-blue-600" data-price-mdl="5900"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tabel Comparativ Produse Section (AS35, AS37 - table styling) -->
+        <section id="tabel-comparativ" class="bg-white p-8 rounded-lg shadow-md mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-blue-500 pb-2">Tabel Comparativ Produse</h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left table-auto border-collapse">
+                    <thead class="bg-blue-600 text-white rounded-t-lg">
+                        <tr>
+                            <th class="rounded-tl-lg">Caracteristică</th>
+                            <th>ASUS ROG Strix Scar 18</th>
+                            <th>Samsung Galaxy S24 Ultra</th>
+                            <th>Sony WH-1000XM5</th>
+                            <th>Apple Watch Ultra 2</th>
+                            <th class="rounded-tr-lg">Wacom Intuos Pro M</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="hover:bg-blue-50 transition duration-200">
+                            <td class="font-medium">Preț Aproximativ</td>
+                            <td class="price-mdl" data-price-mdl="55000"></td>
+                            <td class="price-mdl" data-price-mdl="21000"></td>
+                            <td class="price-mdl" data-price-mdl="5600"></td>
+                            <td class="price-mdl" data-price-mdl="8500"></td>
+                            <td class="price-mdl" data-price-mdl="5900"></td>
+                        </tr>
+                        <tr class="hover:bg-blue-50 transition duration-200">
+                            <td class="font-medium">Performanță</td>
+                            <td>Gaming extremă</td>
+                            <td>Flagship AI</td>
+                            <td>Anulare zgomot superioară</td>
+                            <td>Monitorizare avansată</td>
+                            <td>Precizie profesională</td>
+                        </tr>
+                        <tr class="hover:bg-blue-50 transition duration-200">
+                            <td class="font-medium">Mobilitate</td>
+                            <td>Redusă</td>
+                            <td>Excelentă</td>
+                            <td>Bună</td>
+                            <td>Excelentă</td>
+                            <td>Medie</td>
+                        </tr>
+                        <tr class="hover:bg-blue-50 transition duration-200">
+                            <td class="font-medium">Ideal Pentru</td>
+                            <td>Gameri profesioniști, creatorii de conținut</td>
+                            <td>Utilizatori avansați, fotografi</td>
+                            <td>Călătorii, audiții imersive</td>
+                            <td>Sportivi, aventurieri</td>
+                            <td>Artiști digitali, designeri</td>
+                        </tr>
+                        <tr class="hover:bg-blue-50 transition duration-200">
+                            <td class="font-medium">Caracteristici Cheie</td>
+                            <td>18" QHD 240Hz, RTX 4090</td>
+                            <td>AI, 200MP cameră, S Pen</td>
+                            <td>Anulare zgomot adaptivă, 30h</td>
+                            <td>GPS dual-frecvență, 3000 niți</td>
+                            <td>8192 nivele presiune, Bluetooth</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Formular Comanda Demo Section (AS36, AS40 - form data masking comment) -->
+        <section id="comanda-demo" class="bg-white p-8 rounded-lg shadow-md mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-blue-500 pb-2">Solicită o Comandă Demo</h2>
+            <p class="text-lg leading-relaxed text-gray-700 mb-6">Completează formularul de mai jos și te vom contacta pentru o demonstrație a produsului dorit.</p>
+            <form action="#" method="POST" class="space-y-6">
+                <div>
+                    <label for="nume" class="block text-lg font-medium text-gray-700 mb-2">Nume Complet:</label>
+                    <input type="text" id="nume" name="nume" required
+                           class="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 transition duration-200">
+                </div>
+                <div>
+                    <label for="email" class="block text-lg font-medium text-gray-700 mb-2">Adresă Email:</label>
+                    <input type="email" id="email" name="email" required
+                           class="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 transition duration-200">
+                </div>
+                <div>
+                    <label for="telefon" class="block text-lg font-medium text-gray-700 mb-2">Număr Telefon (Opțional):</label>
+                    <input type="tel" id="telefon" name="telefon"
+                           class="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 transition duration-200">
+                </div>
+                <div>
+                    <label for="produs" class="block text-lg font-medium text-gray-700 mb-2">Produs de Interes:</label>
+                    <select id="produs" name="produs" required
+                            class="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 transition duration-200 bg-white">
+                        <option value="">Alege un produs...</option>
+                        <option value="asus-rog-strix-scar-18">ASUS ROG Strix Scar 18</option>
+                        <option value="samsung-galaxy-s24-ultra">Samsung Galaxy S24 Ultra</option>
+                        <option value="sony-wh-1000xm5">Sony WH-1000XM5</option>
+                        <option value="apple-watch-ultra-2">Apple Watch Ultra 2</option>
+                        <option value="wacom-intuos-pro-m">Wacom Intuos Pro M</option>
+                        <option value="altul">Altul (specifică în mesaj)</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="mesaj" class="block text-lg font-medium text-gray-700 mb-2">Mesajul Tău:</label>
+                    <textarea id="mesaj" name="mesaj" rows="5"
+                              class="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+                              placeholder="Introduceți aici întrebări specifice sau alte detalii..."></textarea>
+                </div>
+                <button type="submit"
+                        class="w-full md:w-auto px-8 py-4 bg-blue-600 text-white font-bold text-xl rounded-lg shadow-lg
+                               hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50
+                               transition duration-300 ease-in-out transform hover:scale-105">
+                    Trimite Solicitarea
+                </button>
+            </form>
+
+            
+            <div class="mt-8">
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">Locația Noastră</h3>
+                <div class="bg-gray-200 w-full h-64 rounded-md flex items-center justify-center text-gray-600 text-center">
+                    
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d2721.9584628680427!2d28.861002952220407!3d46.98214936843515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sro!2s!4v1749536489170!5m2!1sro!2s" 
+                    class="bg-gray-200 w-full h-64 rounded-md flex items-center justify-center text-gray-600 text-center"></iframe>
+                            
+                </div>
+            </div>
+        </section>
+
+        <!-- Plugin Slider pentru Produse Section (AS38) -->
+        <section id="slider-produse" class="bg-white p-8 rounded-lg shadow-md mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-blue-500 pb-2">Galerie Produse</h2>
+            <div class="carousel-container relative rounded-lg shadow-xl">
+                <div class="carousel-track flex">
+                    <div class="carousel-item" style="padding-left: 400px;">
+                        <img src="laptop.jpg" alt="Imagine Laptop ASUS ROG Strix Scar 18" class="w-auto h-96 object-cover rounded-lg">
+                    </div>
+                    <div class="carousel-item" style="padding-left: 350px;">
+                        <img src="phone.jpg" alt="Imagine Samsung Galaxy S24 Ultra" class="w-auto h-96 object-cover rounded-lg">
+                    </div>
+                    <div class="carousel-item" style="padding-left: 300px;">
+                        <img src="watch.avif" alt="Imagine Apple Watch Ultra 2" class="w-auto h-96 object-cover rounded-lg">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="headphones.avif" alt="Imagine Sony WH-1000XM5" class="w-auto h-96 object-cover rounded-lg">
+                    </div>
+                    <div class="carousel-item" >
+                        <img src="tablet.jpg" alt="Wacom Intuos Pro M" class="w-auto h-96 object-cover rounded-lg">
+                    </div>
+                </div>
+                <button class="carousel-button prev" aria-label="Previous image">&#10094;</button>
+                <button class="carousel-button next" aria-label="Next image">&#10095;</button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 text-white p-6 mt-12 shadow-inner">
+        <div class="container mx-auto text-center">
+            <p class="text-lg mb-4">
+                <strong>Contact:</strong>
+                <br>Email: <a href="mailto:contact@techshop.ro" class="text-blue-400 hover:underline">contact@techshop.ro</a>
+                <br>Telefon: +40 7XY ZZZ ZZZ
+                <br>Adresă: Bd. Dacia Chisinau 
+            </p>
+            <p class="text-sm text-gray-400">&copy; 2025 TechShop. Toate drepturile rezervate.</p>
+            <p class="text-xs text-gray-500 mt-2">
+            
+            </p>
+        </div>
+    </footer>
+
+   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // --- Carousel functionality (AS38) ---
+        const track = document.querySelector('.carousel-track');
+        const items = document.querySelectorAll('.carousel-item');
+        const prevButton = document.querySelector('.carousel-button.prev');
+        const nextButton = document.querySelector('.carousel-button.next');
+        let currentIndex = 0;
+
+        let itemWidth = items.length > 0 ? items[0].clientWidth : 0;
+
+        window.addEventListener('resize', () => {
+            if (items.length > 0) {
+                itemWidth = items[0].clientWidth;
+                track.style.transform = `translateX(${-currentIndex * itemWidth}px)`;
+            }
+        });
+
+        function moveToSlide(index) {
+            if (items.length === 0) return; 
+
+            if (index >= items.length) {
+                index = 0;
+            } else if (index < 0) {
+                index = items.length - 1;
+            }
+            currentIndex = index;
+
+            const currentItemWidth = items[0].clientWidth;
+            track.style.transform = `translateX(${-currentIndex * currentItemWidth}px)`;
+        }
+
+        prevButton.addEventListener('click', () => {
+            moveToSlide(currentIndex - 1);
+        });
+
+        nextButton.addEventListener('click', () => {
+            moveToSlide(currentIndex + 1);
+        });
+
+        setInterval(() => {
+            moveToSlide(currentIndex + 1);
+        }, 5000); 
+
+        
+        function formatMdlPrice(mdlPrice) {
+            return `${parseFloat(mdlPrice).toFixed(2).replace('.', ',')} MDL`;
+        }
+
+        const priceDisplays = document.querySelectorAll('.price-display');
+        priceDisplays.forEach(display => {
+            const mdlPrice = display.dataset.priceMdl; 
+            if (mdlPrice) { 
+                display.textContent = formatMdlPrice(mdlPrice);
+            }
+        });
+
+        const tablePriceCells = document.querySelectorAll('.price-mdl');
+        tablePriceCells.forEach(cell => {
+            const mdlPrice = cell.dataset.priceMdl; 
+            if (mdlPrice) { // 
+                cell.textContent = formatMdlPrice(mdlPrice);
+            }
+        });
+    });
+</script>
+</body>
+</html>

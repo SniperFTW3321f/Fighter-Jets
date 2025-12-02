@@ -1,0 +1,94 @@
+    body {
+        font-family: 'Inter', sans-serif;
+        background: linear-gradient(#1e2736, #273346 );
+        color: #2e2416;
+        height: 98vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position : relative;
+        margin: 0;
+        }
+    .h1 {
+            text-align: center;
+            margin-top: 10px;
+            color: #58a6ff;
+            font-size: 72px;
+            font-weight: bold;
+        }
+    h2 {
+            margin-top: 10px;
+            color: #538dcf;
+            font-size: 36px;
+            font-weight: bold;
+        }
+    .back    {
+
+            align-self: left;
+            color: #58a6ff;
+            cursor: pointer;
+            position: absolute;
+            top : 5px;
+            left : 5px;
+        }
+    .back:hover {
+            color: #ffd9c0;
+            
+        }
+    .container {
+            display: flex;
+            flex-direction: column;
+            border: #1e2736 solid 2px;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            background-color: #484f6e;
+            border-radius: 20px;
+            width: 500px;
+        }
+        footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: #1e2736;
+            color: #2e2416;
+            text-align: center;
+            padding: 10px 0;
+            
+        }
+    .container-footer {
+            display: flex;
+            flex-direction: column;
+            height: 100px;
+            max-width: 2000px ;
+        }
+    .email-input, .password-input {
+            width: 300px;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+    .submit-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    .submit-button:hover {
+            background-color: #6FBF72;
+        }
+        .text-footer {
+            margin: 0;
+            font-size: 15px;
+            color : #8e949b80;
+        }
+        footer a {
+            color: #58a6ff;
+            text-decoration: none;
+        }
