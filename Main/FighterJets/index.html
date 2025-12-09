@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fighter Jets</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/global.css">
+    <link rel="stylesheet" href="CSS/Index.Css">
+</head>
+<body>
+    <header>
+        <div style="position: absolute; top: 20px; right: 20px;">
+            <a class="btn" href="SignIn.html">Sign In</a>
+        </div>
+        <h1>Fighter Jets</h1> 
+        <p>A collection of modern and legendary fighter jets.</p>
+    </header>
+
+    <main>
+        <div class="filters">
+            <div class="filter-group">
+                <label for="country-filter">Country:</label>
+                <select id="country-filter">
+                    <option value="all">All countries</option>
+                    <option value="United States">United States</option>
+                    <option value="Russia">Russia</option>
+                    <option value="Europe">Europe</option>
+                    <option value="Other Countries">Other Countries</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="generation-filter">Generation:</label>
+                <select id="generation-filter">
+                    <option value="all">All generations</option>
+                    <option value="4">Generation 4</option>
+                    <option value="4.5">Generation 4.5</option>
+                    <option value="5">Generation 5</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="role-filter">Role:</label>
+                <select id="role-filter">
+                    <option value="all">All roles</option>
+                    <option value="Multirole">Multirole</option>
+                    <option value="Fighter">Fighter</option>
+                    <option value="Bomber">Bomber</option>
+                </select>
+            </div>
+        </div>
+        
+        <div id="planes-container" class="container"></div>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Fighter Jets. All rights reserved.</p>
+        <p>
+            <a href="privacy_policy.html">Privacy Policy</a> |
+            <a href="contact.html">Contact</a>
+        </p>
+    </footer>
+    <script src="Javascript/index.js"></script>
+</body>
+</html>
