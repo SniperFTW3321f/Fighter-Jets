@@ -1,127 +1,156 @@
+/* CSS/Index.Css */
+
 body {
-    font-family: 'Inter', sans-serif;
-    background: linear-gradient(#1e2736, #273346 );
-    color: #2e2416;
-    height: 300%;
+    /* MODIFICAT: Am scos height: 300%. Lăsăm conținutul să dicteze înălțimea. */
+    min-height: 100vh; 
+    /* Folosim variabile din global.css dacă există, altfel fallback */
+    background: linear-gradient(180deg, #1e2736 0%, #273346 100%);
+    color: #c9d1d9;
     margin: 0;
+    /* Fontul este deja setat în global.css, nu e nevoie să-l repetăm, dar e ok */
+    font-family: 'Inter', sans-serif;
 }
+
+/* --- HEADER IMPROVED --- */
 header {
+    /* MODIFICAT: Folosim padding pentru spațiere, nu margini mari pe h1 */
+    padding: 40px 20px;
+    background: transparent; /* Sau o culoare solidă dacă vrei */
+}
+
+.header-inner {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    color: #58a6ff;
-    flex-direction: column  ;
-}
-h1 {
-    margin-top: 80px;
-    margin-bottom: 30px;
-    font-size: 60px;
-}
-.container {
+    position: relative;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 2rem;
-    height: 90%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
 }
+
+/* Pe ecrane mai mari, punem butonul în dreapta absolut, dar controlat */
+@media (min-width: 768px) {
+    .sign-in-btn {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+}
+
+h1 {
+    margin: 0 0 10px 0; /* MODIFICAT: Margini mai curate */
+    font-size: clamp(32px, 5vw, 60px); /* Text scalabil */
+    text-align: center;
+    color: #ffffff;
+}
+
+header p {
+    margin: 0;
+    color: #8b949e;
+    text-align: center;
+}
+
+/* --- FILTERS --- */
 .filters {
-    display: flex;;
-    flex-direction: row;
-    gap:30px;
-    justify-content: center;
-}
-.coutry-filter, .role-filter, .generation-filter {
-    margin-bottom: 1rem;
-    color: #3e5a7a;
     display: flex;
-    align-items: center;
+    flex-wrap: wrap; /* MODIFICAT: Permite trecerea pe rând nou pe mobil */
+    gap: 20px;
     justify-content: center;
+    padding: 20px;
+    background-color: rgba(22, 27, 34, 0.5); /* Ușor fundal pentru separare */
+    margin-bottom: 20px;
 }
+
+/* MODIFICAT: Am reparat selectorul. În HTML ai clasa 'filter-group' */
+.filter-group {
+    display: flex;
+    flex-direction: column; /* Eticheta deasupra selectului e mai modernă */
+    align-items: flex-start;
+}
+
+.filter-group label {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    color: #58a6ff; /* Culoarea de accent */
+    font-weight: 600;
+}
+
 select {
-    margin-left: 10px;
-    padding: 5px;
-    border-radius: 10px;
+    padding: 8px 12px;
+    border-radius: 6px;
     font-size: 16px;
-    background-color: #161b22;
+    background-color: #0d1117;
     color: #c9d1d9;
+    border: 1px solid #30363d;
+    cursor: pointer;
+    min-width: 150px;
 }
-option {
-    margin-right: 10px;
-    border-radius: 20px;
-    font-size: 16px;
-    background-color: #161b22;
-    color: #c9d1d9;
+
+select:focus {
+    outline: 2px solid #58a6ff;
+    border-color: transparent;
 }
-.SignIn {
-    display: flex;
-    justify-content: flex-end;
-    align-items: right;
-    color: white;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: #4CAF50;
-    padding: 8px 16px;
-    text-decoration: none;
-    border-radius: 4px;
+
+/* --- CARDS GRID --- */
+.container {
+    max-width: 1400px; /* Limităm lățimea maximă */
+    margin: 0 auto;
+    padding: 20px;
+    display: grid;
+    /* Grid responsive automat */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
 }
-.SignIn:hover {
-    background-color: #367c39;
-}
+
 .card {
     background-color: #161b22;
     border: 1px solid #30363d;
-    border-radius: 0.5rem;
+    border-radius: 12px; /* Colțuri mai rotunjite */
     overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
     cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+}
 
-}
 .card:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+    border-color: #58a6ff; /* Highlight la hover */
 }
+
 .image-container {
     width: 100%;
-    height: 200px;
+    height: 220px; /* Fix height pentru uniformitate */
     overflow: hidden;
-    border-bottom: 1px solid #4a5568;
-    display: flex;
+    border-bottom: 1px solid #30363d;
 }
+
 .image-container img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
     transition: transform 0.5s ease;
-    display: block;
-}
-.card:hover .image-container img {
-    transform: scale(1.05);
-}
-.card-content {
-    padding: 1rem;
-    color: #c9d1d9;
-    padding: 10px;
-}
-a {
-    text-decoration: none;
-    color: inherit;
 }
 
-a .SignIn {
-    color: #58a6ff;
+.card:hover .image-container img {
+    transform: scale(1.1);
 }
-.footer {
-    bottom: 0;
-    width: 100%;
-    background-color: #1e2736;
-    color: #56cfff;
-    text-align: center;
-    padding: 10px 0;
+
+.card-content {
+    padding: 20px;
+    color: #c9d1d9;
 }
-footer a {
-            color: #58a6ff;
-            text-decoration: none;
-        }
+
+.card-content h2 {
+    margin: 0 0 10px 0;
+    font-size: 1.25rem;
+    color: #ffffff;
+}
+
+.card-content p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #8b949e;
+}
